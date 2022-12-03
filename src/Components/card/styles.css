@@ -1,0 +1,195 @@
+.link-div {
+    width: 300px;
+    height: 195px;
+    position: relative;
+    border-radius: 7px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    animation-name: show;
+    animation-duration: 1s;    
+    background: #FFF;
+}
+
+.top-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-btt {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: none;
+}
+
+.menu-btt:hover {
+    background: rgb(240, 240, 240);
+}
+
+.title-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-area h1 {
+    margin-top: 8px;
+    font-size: 1.6rem;
+    color: rgb(38, 39, 82);
+}
+
+img {
+    object-fit: cover;
+}
+
+.desc-link-area {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.desc-link-area p {
+    width: 90%;
+    font-size: 9pt;
+    font-size: 1.6rem;
+    text-align: justify;
+    color: rgba(38, 39, 82, .8);
+}
+
+.desc-link-area a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 1.3rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a span {
+    margin-right: 3px;
+}
+
+.button-container {
+    width: 89%;
+    height: fit-content;
+    position: absolute;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.button-container button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    background: var(--primary);
+}
+
+.button-container button:hover {
+    background: var(--primary-hover);
+}
+
+.button-container button span {
+    margin-left: 8px;
+}
+
+.menu-btt:hover .card-settins-container {
+    display: block;
+}
+
+.card-settins-container {
+    width: 100px;
+    height: 58px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 8px;
+    margin-top: 100px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    background: rgb(201, 201, 201);
+}
+
+.arrowTop {
+    position: absolute;
+    width: 16px;
+    height: 8px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    margin-top: -37px;
+    right: 12px;
+    background: rgb(201, 201, 201);
+}
+
+.card-settins-container button {
+    width: 100px;
+    height: 29px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px 0px 20px;
+    border: none;
+    background: none;
+}
+
+.edit-btt {
+    border-radius: 5px 5px 0 0;
+}
+
+.edit-btt::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    left: 0;
+    margin-top: 29px;
+    background: rgb(161, 161, 161);
+}
+
+.edit-btt::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 32px;
+    right: 0;
+    margin-top: -24px;
+    opacity: .5;
+    background: none;
+}
+
+.delet-btt {
+    border-radius: 0 0 5px 5px;
+    color: rgb(209, 69, 69);
+}
+
+.edit-btt:hover {
+    background: rgb(161, 161, 161);
+}
+
+.edit-btt:hover .arrowTop {
+    background: rgb(161, 161, 161);
+}
+
+.delet-btt:hover {
+    background: rgb(161, 161, 161);
+}
