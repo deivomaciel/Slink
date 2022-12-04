@@ -14,13 +14,11 @@
 }
 
 .form-group {
-    position: absolute;
-    bottom: 0;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: red; */
 }
 
 .total-container-login {
@@ -62,13 +60,15 @@
     justify-content: center;
 }
 
-.mail-container, .pass-container {
+.mail-container, 
+.pass-container {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.mail-container label, .pass-container label {
+.mail-container label, 
+.pass-container label {
     width: 45px;
     font-size: 1.40rem;
     font-weight: 700;
