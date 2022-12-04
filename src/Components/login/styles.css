@@ -2,15 +2,6 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.total-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
-}
-
 .logo-container {
     width: 100vw;
     display: flex;
@@ -22,14 +13,32 @@
     border-bottom: 1px solid rgb(217, 218, 220);
 }
 
-.total-container p {
+.form-group {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+}
+
+.total-container-login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+
+.total-container-login p {
     font-size: 1.40rem;
     margin-top: -32px;
     font-weight: bold;
 }
 
 .form-content {
-    /* width: 450px; */
     width: 35rem;
     display: flex;
     flex-direction: column;
@@ -182,8 +191,8 @@
 
 .signup-container {
     width: 35rem;
+    margin-top: 32px;
     display: flex;
-    position: fixed;
     bottom: 8px;
     flex-direction: column;
     justify-content: space-between;

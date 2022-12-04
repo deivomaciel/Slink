@@ -17,23 +17,22 @@
     padding: 8px;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
     border-bottom: 1px solid rgb(217, 218, 220);
 }
 
 .singup-p {
     font-size: 1.40rem;
-    margin-bottom: 16px;
     font-weight: bold;
 }
 
 .singup-form-content {
     width: 35rem;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background: red; */
 }
 
 .inputs-container {
@@ -91,7 +90,8 @@
     position: relative;
 }
 
-.singup-form-content p {
+.mail-container p,
+.pass-container p {
     font-size: 1.1rem;
     position: absolute;
     bottom: -16px;
@@ -132,8 +132,9 @@
 
 .login-container {
     width: 35rem;
+    /* position: absolute; */
     display: flex;
-    position: fixed;
+    margin-top: 32px;
     bottom: 8px;
     flex-direction: column;
     justify-content: space-between;
@@ -146,6 +147,7 @@
 .login-container p{
     position: absolute;
     margin-top: 0px;
+    font-weight: bold;
 }
 
 .login-container a {

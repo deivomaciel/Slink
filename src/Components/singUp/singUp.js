@@ -91,59 +91,63 @@ function SingUp() {
                 <div className="logo-container">
                     <img src={logo} alt="Logo" />
                 </div>
-                
-                <p className="singup-p">Para continuar, crie uma conta no Slink.</p>
 
-                <form className="singup-form-content">
-                    <div className="inputs-container">
-                        <div className="name-container">
-                            <label for="name">Nome</label>
-                            <input 
-                                id="name" 
-                                className={`mail-input ${name}`}
-                                type="text" 
-                                placeholder="Nome"
-                                onChange={e => {setName(e.target.value)}}
-                            />
-                        </div>
-                        <div className="mail-container">
-                            <label for="mail">E-mail</label>
-                            <input 
-                                id="mail" 
-                                className="mail-input" 
-                                type="email" 
-                                placeholder="E-mail"
-                                onChange={e => setEmail(e.target.value)}
-                            />
-                            {formInfo.emailAlreadyInUse && <p>Esse e-mail já está em uso.</p>}
-                        </div>
-                        <div className="pass-container">
-                            <label for="pass">Senha</label>
-                            <input 
-                                id="pass" 
-                                className="pass-input" 
-                                type="password" 
-                                placeholder="Senha"
-                                onChange={e => setPassword(e.target.value)}
-                            />
-                            {formInfo.invalidPass && <p>Esse e-mail já está em uso.</p>}
-                            
-                        </div>
+                <div className="form-group">
+                    <div>
+                        <p className="singup-p">Para continuar, crie uma conta no Slink.</p>
                     </div>
-                    <div className="create-container">
-                        <div className="create-content">
-                            <button className="create-btt"onClick={e => validateForm(e)}>
-                            {!loading ? 'CRIAR CONTA' : <Loader />}
-                            </button>
+                    <form className="singup-form-content">
+                        
+                        <div className="inputs-container">
+                            <div className="name-container">
+                                <label for="name">Nome</label>
+                                <input 
+                                    id="name" 
+                                    className={`mail-input ${name}`}
+                                    type="text" 
+                                    placeholder="Nome"
+                                    onChange={e => {setName(e.target.value)}}
+                                />
+                            </div>
+                            <div className="mail-container">
+                                <label for="mail">E-mail</label>
+                                <input 
+                                    id="mail" 
+                                    className="mail-input" 
+                                    type="email" 
+                                    placeholder="E-mail"
+                                    onChange={e => setEmail(e.target.value)}
+                                />
+                                {formInfo.emailAlreadyInUse && <p>Esse e-mail já está em uso.</p>}
+                            </div>
+                            <div className="pass-container">
+                                <label for="pass">Senha</label>
+                                <input 
+                                    id="pass" 
+                                    className="pass-input" 
+                                    type="password" 
+                                    placeholder="Senha"
+                                    onChange={e => setPassword(e.target.value)}
+                                />
+                                {formInfo.invalidPass && <p>Esse e-mail já está em uso.</p>}
+                                
+                            </div>
                         </div>
+                        <div className="create-container">
+                            <div className="create-content">
+                                <button className="create-btt"onClick={e => validateForm(e)}>
+                                {!loading ? 'CRIAR CONTA' : <Loader />}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div className="login-container">
+                        <p>Já tem uma conta?</p>
+                        
+                        <Link to="/">
+                            ENTRAR NO SLINK
+                        </Link>
                     </div>
-                </form>
-                <div className="login-container">
-                    <p>Já tem uma conta?</p>
-                    
-                    <Link to="/">
-                        ENTRAR NO SLINK
-                    </Link>
                 </div>
             </div>
         )
