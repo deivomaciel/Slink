@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebaseConfig";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom"
+import Loader from '../loader/Loader'
 
 function Login() {
     let userInfo = {
@@ -14,6 +15,9 @@ function Login() {
         uid: null,
         accessToken: null
     }
+
+    let invalidInputs = false
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [
@@ -24,7 +28,6 @@ function Login() {
     ] = useSignInWithEmailAndPassword(auth)
 
     const handleLogin = e => {
-        e.preventDefault()
         try {
             signInWithEmailAndPassword(email, password)
         } catch (er) {
@@ -32,7 +35,24 @@ function Login() {
         }
     }
 
-    if(loading) {return <h1>Carregando</h1>}
+    const validateForm = (e) => {
+        e.preventDefault()
+        const inputs = document.querySelectorAll('.inputs-container input')
+
+        if(email == '' || password == '') {
+            inputs.forEach(input => {
+                input.value == '' ? (input.style.border = '2px solid #D25E4A') : (input.style.border = '1px solid #333333')
+            })
+
+        } else {
+            inputs.forEach(input => {
+                input.style.border = '1px solid #333333'
+            })
+            handleLogin(e)
+        }
+    }
+
+    (error && (error.code == 'auth/wrong-password' || error.code == 'auth/user-not-found')) && (invalidInputs = true)
     if(user) {
         userInfo.name = user.user.name
         userInfo.email = user.user.email
@@ -48,9 +68,12 @@ function Login() {
                     <img src={logo} alt="Logo" />
                 </div>
                 
-                <p>Para continuar, faça login no Slink.</p>
-
+                <div>
+                    <p className="login-msg">Para continuar, faça login no Slink.</p>
+                </div>
+                
                 <form className="form-content">
+                {invalidInputs ? <p className="formWarning">E-mail o senha incorretos.</p> : <p></p>}
                     <div className="inputs-container">
                         <div className="mail-container">
                             <label for="mail">E-mail</label>
@@ -80,8 +103,8 @@ function Login() {
                                 <input className="check" type="checkbox" />
                                 Lambrar de mim
                             </label>
-                            <button className="submit-btt" onClick={handleLogin}>
-                                ENTRAR
+                            <button className="submit-btt" onClick={e => {validateForm(e)}}>
+                                {!loading ? 'ENTRAR' : <Loader />}
                             </button>
                         </div>
                     </div>

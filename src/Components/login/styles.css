@@ -41,6 +41,10 @@
     border-bottom: 1px solid rgb(187, 187, 187);
 }
 
+.formWarning {
+    color: var(--cancel);
+}
+
 .inputs-container {
     width: 100%;
     display: flex;
@@ -160,13 +164,16 @@
 .enter-content button {
     width: 131px;
     height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 8px;
     border: none;
     cursor: pointer;
     letter-spacing: 1px;
     font-weight: bold;
     transition: background .3s;
-    background: var(--primary)
+    background: var(--primary);
 }
 
 .enter-content button:hover {
@@ -176,7 +183,7 @@
 .signup-container {
     width: 35rem;
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 8px;
     flex-direction: column;
     justify-content: space-between;

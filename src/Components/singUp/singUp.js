@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./styles.css"
 import logo from "../../assets/logo.png"
+import Loader from "../loader/Loader";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../services/firebaseConfig";
 import { Link, Navigate } from "react-router-dom";
 
 function SingUp() {
-    let mailWarning
     let userInfo = {
         name: null,
         email: null,
@@ -16,13 +16,9 @@ function SingUp() {
     }
 
     let formInfo = {
-        whiteCamp: false,
         invalidEmail: false,
         invalidPass: false,
-        nameUnfilled: false,
-        mailUnfilled: false,
         emailAlreadyInUse: false,
-        passUnfilled: false
     }
 
     const [name, setName] = useState('')
@@ -55,8 +51,9 @@ function SingUp() {
             })
 
         } else if(password.length < 8) {
-            formInfo.invalidPass = 'invalid-pass'
-            alert('Senha inválida')
+            formInfo.invalidPass = true
+            inputs[2].style.border = '2px solid #D25E4A'
+            alert('A senha deve ter no mínimo 8 dígitos.')
 
         } else {
             inputs.forEach(input => {
@@ -74,7 +71,8 @@ function SingUp() {
     } 
 
     if(error && error.code == 'auth/email-already-in-use') {
-        mailWarning = 'Esse e-mail já está em uso.'
+        const mainInput = document.querySelector('#mail')
+        mainInput.style.border = '2px solid #D25E4A'
         formInfo.emailAlreadyInUse = true
     }
 
@@ -117,7 +115,7 @@ function SingUp() {
                                 placeholder="E-mail"
                                 onChange={e => setEmail(e.target.value)}
                             />
-                            {formInfo.emailAlreadyInUse && <p>{mailWarning}</p>}
+                            {formInfo.emailAlreadyInUse && <p>Esse e-mail já está em uso.</p>}
                         </div>
                         <div className="pass-container">
                             <label for="pass">Senha</label>
@@ -128,12 +126,14 @@ function SingUp() {
                                 placeholder="Senha"
                                 onChange={e => setPassword(e.target.value)}
                             />
+                            {formInfo.invalidPass && <p>Esse e-mail já está em uso.</p>}
+                            
                         </div>
                     </div>
                     <div className="create-container">
                         <div className="create-content">
                             <button className="create-btt"onClick={e => validateForm(e)}>
-                                {loading ? "CARREGANDO" : "CRIAR CONTA"}
+                            {!loading ? 'CRIAR CONTA' : <Loader />}
                             </button>
                         </div>
                     </div>
