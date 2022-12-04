@@ -56,7 +56,6 @@ function Card(props) {
                         {props.link}
                     </a>
                 </div>
-
                 <div className="button-container">
                     <button onClick={() => copyLink(props.link)}>
                         {clicked ? <BsCheckCircle size={24} /> : <div>
