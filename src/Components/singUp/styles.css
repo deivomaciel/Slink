@@ -2,6 +2,15 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.form-group {
+    position: fixed;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .total-container {
     height: 100vh;
     display: flex;
