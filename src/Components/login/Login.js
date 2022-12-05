@@ -54,7 +54,7 @@ function Login() {
 
     (error && (error.code == 'auth/wrong-password' || error.code == 'auth/user-not-found')) && (invalidInputs = true)
     if(user) {
-        userInfo.name = user.user.
+        userInfo.name = user.user.name
         userInfo.email = user.user.email
         userInfo.uid = user.user.uid
         userInfo.accessToken = user.user.accessToken
