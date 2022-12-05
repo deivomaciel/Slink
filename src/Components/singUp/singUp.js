@@ -97,7 +97,6 @@ function SingUp() {
                         <p className="singup-p">Para continuar, crie uma conta no Slink.</p>
                     </div>
                     <form className="singup-form-content">
-                        
                         <div className="inputs-container">
                             <div className="name-container">
                                 <label for="name">Nome</label>
@@ -143,7 +142,6 @@ function SingUp() {
                     </form>
                     <div className="login-container">
                         <p>Já tem uma conta?</p>
-                        
                         <Link to="/">
                             ENTRAR NO SLINK
                         </Link>

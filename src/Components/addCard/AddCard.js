@@ -72,7 +72,8 @@ function AddCard({ modules, dispatch }) {
             const uid = JSON.parse(localStorage.userInfo).uid
             try {
                 addNewCardOnFirestore(uid)
-                dispatch(addNewCard({ // Trocar para home e usar real time db 
+                // https://firebase.google.com/docs/auth?authuser=0&hl=pt
+                dispatch(addNewCard({ 
                     title: title,
                     link: link,
                     description: desc

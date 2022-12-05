@@ -35,18 +35,19 @@
 }
 
 .user-email span {
-    width: 2.4em;
-    height: 2.4em;
+    width: 10px;
+    height: 10px;
     display: flex;
     justify-content: center;
     align-content: center;
     border-radius: 50px;
     margin-right: 8px;
-    background: rgb(66, 133, 244);
+    background: rgb(0, 240, 0);
 }
 
 .user-email span p {
-    margin-top: 32%
+    font-size: 1.1rem;
+    margin-top: 6px
 }
 
 .menu-container button {

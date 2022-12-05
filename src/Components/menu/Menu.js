@@ -21,9 +21,7 @@ function Menu() {
     return (
         <div className="menu-container">
             <div className="user-email">
-                <span>
-                    <p>T</p>
-                </span>
+                <span></span>
                 <p>{userInfo.email}</p>
             </div>
                 <button>

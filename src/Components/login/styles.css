@@ -2,33 +2,30 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.total-container-login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+}
+
 .logo-container {
     width: 100vw;
     display: flex;
     padding: 8px;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
     border-bottom: 1px solid rgb(217, 218, 220);
 }
 
-.form-group {
+.form-group-login {
     position: fixed;
-    margin-top: 120px;
+    margin-top: 160px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.total-container-login {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
 }
 
 .total-container-login p {

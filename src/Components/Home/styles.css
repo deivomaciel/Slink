@@ -40,6 +40,15 @@ main {
     background: rgb(209, 207, 207);
 }
 
+.no-links-div {
+    margin-top: 50%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #000;
+    opacity: .2;
+    /* background: red; */
+}
+
 @media (max-width: 1250px) {
     .links-container {
         grid-template-columns: 1fr 1fr 1fr;
