@@ -20,6 +20,7 @@ function PopupDelete({ modules, dispatch }) {
     }
     
     const deleteCard = async () => {
+        dispatch(removeLocalCard(modules.id))
         const uid = JSON.parse(localStorage.userInfo).uid
         try {
           await deleteDoc(doc(db, `users/${uid}/cards`, modules.id))
@@ -27,7 +28,6 @@ function PopupDelete({ modules, dispatch }) {
         } catch (error) {
             // alert('Não foi possível concluir a solicitação')
         }
-        dispatch(removeLocalCard(modules.id))
         dispatch(hidePopUp(false))
     }
 

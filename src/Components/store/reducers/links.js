@@ -1,7 +1,7 @@
 const INITIAL_STATE = []
 
 const deletElementById = id => {
-    for(let i = 0; i < INITIAL_STATE.length - 1; i++) {
+    for(let i = 0; i < INITIAL_STATE.length; i++) {
         if(INITIAL_STATE[i].id == id) {
             INITIAL_STATE.splice(i, 1)
             break

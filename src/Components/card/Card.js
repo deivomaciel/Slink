@@ -33,7 +33,7 @@ function Card(props) {
         return {
           type: 'SHOW_DELET_POP_UP',
           popUp
-        }
+        }        
       }
 
     return (
