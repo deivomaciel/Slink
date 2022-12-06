@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import CardSettins from "../cardSettins/CardSettins"
 import { BsLink45Deg, BsCheckCircle } from "react-icons/bs"
-import { FiCopy, FiCheck, FiTrash2, FiEdit2 } from "react-icons/fi"
+import { FiCopy, FiTrash2, FiEdit2 } from "react-icons/fi"
 import { TbMenu } from "react-icons/tb"
 import "./styles.css"
 
@@ -16,7 +15,27 @@ function Card(props) {
         navigator.clipboard.writeText(link)
         setClick(clicked = !clicked)
     }
-    
+
+    const addCardToDelete = cardInfo => {
+        return {
+            type: "ADD_CARD_TO_DELETE" ,
+            cardInfo
+        }
+    }
+
+    const showDeletePopUp = popUp => {
+        props.dispatch(addCardToDelete({
+            id: props.id,
+            title: props.title,
+            link: props.link
+        }))
+
+        return {
+          type: 'SHOW_DELET_POP_UP',
+          popUp
+        }
+      }
+
     return (
         <div>
             <div className="link-div">
@@ -34,7 +53,7 @@ function Card(props) {
                                     </span> 
                                 </button>
 
-                                <button className="delet-btt">
+                                <button className="delet-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
                                     Excluir
                                     <span>
                                         <FiTrash2 />

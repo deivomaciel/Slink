@@ -1,0 +1,79 @@
+.pop-up {
+    height: 100vh;
+}
+
+.pop-up-container-delete {
+    width: 316px;
+    height: 195px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+    position: fixed;
+    margin-top: calc((100vh / 2) - 20%);
+    border-radius: 8px;
+    transition: all .3;
+    animation-name: show;
+    animation-duration: .5s;
+    background: #fff;;
+}
+
+.pop-up-container-delete h1 {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 2rem;
+    color: rgb(38, 39, 82);
+}
+
+.card-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-info-container img {
+    margin-top: 8px;
+    margin-right: 16px;
+}
+
+.button-container-delete {
+    width: 90%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-container-delete button {
+    width: 120px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.delete-btn {
+    border: none;
+    color: #fff;
+    background: var(--cancel);
+}
+
+.delete-btn:hover {
+    background: red;
+}
+
+.cancel-btn {
+    border: 2px solid rgb(148, 147, 147);
+    color: rgb(148, 147, 147);
+    background: #fff;
+}
+
+.cancel-btn:hover {
+    color: #fff;
+    background: rgb(148, 147, 147);
+}

@@ -20,8 +20,7 @@
 }
 
 .form-group-login {
-    position: fixed;
-    margin-top: 160px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;

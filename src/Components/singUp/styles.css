@@ -3,8 +3,7 @@
 }
 
 .form-group {
-    position: fixed;
-    margin-top: 120px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;

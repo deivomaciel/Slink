@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../services/firebaseConfig";
 import React, { useState } from "react";
 import { BsImage } from "react-icons/bs"
@@ -72,7 +72,6 @@ function AddCard({ modules, dispatch }) {
             const uid = JSON.parse(localStorage.userInfo).uid
             try {
                 addNewCardOnFirestore(uid)
-                // https://firebase.google.com/docs/auth?authuser=0&hl=pt
                 dispatch(addNewCard({ 
                     title: title,
                     link: link,
