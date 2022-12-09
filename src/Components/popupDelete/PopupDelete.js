@@ -26,7 +26,7 @@ function PopupDelete({ modules, dispatch }) {
           await deleteDoc(doc(db, `users/${uid}/cards`, modules.id))
 
         } catch (error) {
-            // alert('Não foi possível concluir a solicitação')
+            console.log('Não foi possível concluir a solicitação')
         }
         dispatch(hidePopUp(false))
     }

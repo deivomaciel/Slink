@@ -1,24 +1,24 @@
 import React, { useState } from "react"
 import { BsLink45Deg, BsCheckCircle } from "react-icons/bs"
-import { FiCopy, FiTrash2, FiEdit2 } from "react-icons/fi"
-import { TbMenu } from "react-icons/tb"
+import { FiCopy, FiTrash } from "react-icons/fi"
 import "./styles.css"
 
 function Card(props) {
-    const url = `${props.link}`
+    let url = props.link
     const linkIcon = `https://www.google.com/s2/favicons?domain=${props.link}`
-
-    let [showSettins, setSettins] = useState(false)
     let [clicked, setClick] = useState(false)
+
+    url.length > 38 && (url = `${url.substr(0, 30)}...`)
 
     const copyLink = link => {
         navigator.clipboard.writeText(link)
         setClick(clicked = !clicked)
+        clicked && (document.querySelector('.copy-btn').style.background = '#4AD295')
     }
 
     const addCardToDelete = cardInfo => {
         return {
-            type: "ADD_CARD_TO_DELETE" ,
+            type: "ADD_CARD_TO_DELETE",
             cardInfo
         }
     }
@@ -42,24 +42,8 @@ function Card(props) {
                 <div className="title-area">
                     <div className="top-card">
                         <img className="icon" src={linkIcon} title={props.imgTitle} height="24" width="24"/>
-                        <button className="menu-btt" onClick={() => setSettins(showSettins = !showSettins)}>
-                            <TbMenu />
-                            <div className="card-settins-container">
-                                <button className="edit-btt">
-                                    <div className="arrowTop"></div>
-                                    Editar
-                                    <span>
-                                        <FiEdit2 />
-                                    </span> 
-                                </button>
-
-                                <button className="delet-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
-                                    Excluir
-                                    <span>
-                                        <FiTrash2 />
-                                    </span>
-                                </button>
-                            </div>
+                        <button className="menu-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
+                            <FiTrash />
                         </button>
 
                     </div>
@@ -68,15 +52,15 @@ function Card(props) {
             
                 <div className="desc-link-area">
                     <p>{props.description}</p>
-                    <a href={url}>
+                    <a href={props.link}>
                         <span>
                             <BsLink45Deg />
                         </span>
-                        {props.link}
+                        {url}
                     </a>
                 </div>
                 <div className="button-container">
-                    <button onClick={() => copyLink(props.link)}>
+                    <button className="copy-btn" onClick={() => copyLink(props.link)}>
                         {clicked ? <BsCheckCircle size={24} /> : <div>
                             Copiar 
                             <span>
