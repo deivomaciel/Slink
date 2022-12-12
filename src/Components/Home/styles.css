@@ -50,6 +50,10 @@ main {
     opacity: .2;
 }
 
+.loader-container {
+    margin-top: calc((100vh / 2) - 56px);
+}
+
 @media (max-width: 1250px) {
     .links-container {
         grid-template-columns: 1fr 1fr 1fr;

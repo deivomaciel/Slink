@@ -104,7 +104,13 @@ function Login() {
                                     Lambrar de mim
                                 </label>
                                 <button className="submit-btt" onClick={e => {validateForm(e)}}>
-                                    {!loading ? 'ENTRAR' : <Loader />}
+                                    {!loading ? 'ENTRAR' : (
+                                        <Loader
+                                            width='24'
+                                            height='24'
+                                            color='#fff'
+                                        />
+                                    )}
                                 </button>
                             </div>
                         </div>

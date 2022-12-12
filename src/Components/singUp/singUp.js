@@ -135,7 +135,13 @@ function SingUp() {
                         <div className="create-container">
                             <div className="create-content">
                                 <button className="create-btt"onClick={e => validateForm(e)}>
-                                {!loading ? 'CRIAR CONTA' : <Loader />}
+                                {!loading ? 'CRIAR CONTA' : (
+                                    <Loader
+                                        width='24'
+                                        height='24'
+                                        color='#fff'
+                                    />
+                                )}
                                 </button>
                             </div>
                         </div>

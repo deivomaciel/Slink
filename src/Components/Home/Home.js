@@ -7,9 +7,12 @@ import { connect } from "react-redux"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../../services/firebaseConfig";
 import "./styles.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Loader from "../loader/Loader";
+import Skeleton from "../skeleton/Skeleton";
 
 function App({ modules, dispatch }) {
+  let [loadFlag, setLoadFlag] = useState(false) 
   const uid = JSON.parse(localStorage.userInfo).uid
   let flag = false
 
@@ -28,7 +31,9 @@ function App({ modules, dispatch }) {
   }
 
   const getAllCards = async () => {
+    setLoadFlag(true)
     const querySnapshot = await getDocs(collection(db, `users/${uid}/cards`))
+    setLoadFlag(false)
     querySnapshot.forEach(doc => {
       dispatch(addNewCard({ 
         id: doc.data().id,
@@ -63,11 +68,14 @@ function App({ modules, dispatch }) {
 
       <main>
         {
-          modules.links.length < 1 ? (
-            <div className="no-links-div"> 
-              <h1>Você ainda não salvou um link.</h1>
-            </div>
-          ) : (
+          loadFlag ? <Skeleton />
+          // modules.links.length < 1 ? (
+          //   <div className="no-links-div"> 
+          //     <h1>Você ainda não salvou um link.</h1>
+          //   </div>
+          // )
+
+         : (
             <div className="links-container">
               {
                 modules.links.map(card => (

@@ -2,8 +2,11 @@ import { deleteDoc, doc } from "firebase/firestore"
 import { db } from "../../services/firebaseConfig"
 import { connect } from "react-redux";
 import "./styles.css"
+import { useState } from "react";
+import Loader from "../loader/Loader";
 
 function PopupDelete({ modules, dispatch }) {
+    let [loadFlag, setLoadFlag] = useState(false) 
     const linkIcon = `https://www.google.com/s2/favicons?domain=${modules.link}`
     const hidePopUp = popUp => {
         return {
@@ -23,7 +26,9 @@ function PopupDelete({ modules, dispatch }) {
         dispatch(removeLocalCard(modules.id))
         const uid = JSON.parse(localStorage.userInfo).uid
         try {
-          await deleteDoc(doc(db, `users/${uid}/cards`, modules.id))
+            setLoadFlag(true)
+            await deleteDoc(doc(db, `users/${uid}/cards`, modules.id))
+            setLoadFlag(false)
 
         } catch (error) {
             console.log('Não foi possível concluir a solicitação')
@@ -41,7 +46,13 @@ function PopupDelete({ modules, dispatch }) {
                 </div>
                 <div className="button-container-delete">
                     <button className="delete-btn" onClick={() => deleteCard()}>
-                        Excluir
+                        {!loadFlag ? 'Excluir' : (
+                            <Loader
+                                width='24'
+                                height='24'
+                                color='#fff'
+                            />
+                        )}
                     </button>
 
                     <button className="cancel-btn" onClick={() => dispatch(hidePopUp(false))}>
