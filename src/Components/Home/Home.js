@@ -15,14 +15,14 @@ function App({ modules, dispatch }) {
   const uid = JSON.parse(localStorage.userInfo).uid
   let flag = false
 
-  const showPopUp = (popUp) => {
+  const showPopUp = popUp => {
     return {
       type: 'SET_POP_UP_ACTIVE',
       popUp
     }
   }
 
-  const addNewCard = (newCard) => {
+  const addNewCard = newCard => {
     return {
         type: "ADD_CARD",
         newCard

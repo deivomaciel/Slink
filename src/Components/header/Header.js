@@ -20,8 +20,8 @@ function Header() {
                 <div className="arrow">
                     <MdOutlineKeyboardArrowDown />
                 </div>  
-                {state && <Menu />}
             </div>
+            {state && <Menu />}
         </header>
     )
 }

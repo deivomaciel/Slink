@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSettings, FiLogOut } from "react-icons/fi"
-import { MdOutlineLightMode } from "react-icons/md"
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md"
 import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebaseConfig";
+import { connect } from "react-redux";
 import "./styles.css"
 
-function Menu() {
+function Menu({ modules, dispatch }) {
+    const [darkTheme, setDarkTheme] = useState(false)
     const userInfo = JSON.parse(localStorage.userInfo)
-    let success = false
     const [signOut, loading, error] = useSignOut(auth)
+    let success = false
 
     const logOut = async () => {
         success = await signOut()
@@ -30,13 +32,6 @@ function Menu() {
                     </span>
                     Configurações
                 </button>
-                <button>
-                    <span>
-                        <MdOutlineLightMode />
-                    </span>
-                    Tema
-                </button>
-
             <div className="line">
                 <hr/>
             </div>
@@ -52,4 +47,5 @@ function Menu() {
     )
 }
 
-export default Menu
+export default connect(state => ({ modules: state.theme }))(Menu)
+
