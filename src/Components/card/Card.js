@@ -15,6 +15,11 @@ function Card(props) {
         navigator.clipboard.writeText(link)
         setClick(clicked = !clicked)
         setButtonClass('copy')
+
+        setTimeout(() => {
+            setClick(clicked = !clicked)
+            setButtonClass('uncopy')
+        }, 2000)
     }
 
     const addCardToDelete = cardInfo => {
