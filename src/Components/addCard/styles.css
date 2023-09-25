@@ -48,8 +48,23 @@
     font-size: 3.2rem;
 }
 
+.desc-input-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+}
+
 .link-and-desc {
     margin-top: 16px;
+}
+
+.link-and-desc span {
+    position: absolute;
+    margin-right: 16px;
+    opacity: .5;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 .link-and-desc input {

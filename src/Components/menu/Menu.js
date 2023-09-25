@@ -23,17 +23,11 @@ function Menu({ modules, dispatch }) {
     return (
         <div className="menu-container">
             <div className="user-email">
-                <span></span>
-                <p>{userInfo.email}</p>
-            </div>
-                <button>
-                    <span>
-                        <FiSettings />
-                    </span>
-                    Configurações
-                </button>
-            <div className="line">
-                <hr/>
+                <p>Conectado:</p>
+                <div className="user-email-content">
+                    <span></span>
+                    <p>{userInfo.email}</p>
+                </div>
             </div>
             <div className="menu-button-container">
                 <button onClick={logOut}>

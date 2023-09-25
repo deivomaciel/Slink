@@ -5,11 +5,15 @@ import "./styles.css"
 
 function Card(props) {
     let url = props.link
+    let desc = props.description
+    const maxUrlCaracter = 38
+    const maxDescCaracter = 32
     const linkIcon = `https://www.google.com/s2/favicons?domain=${props.link}`
     let [clicked, setClick] = useState(false)
     let [buttonCalss, setButtonClass] = useState('uncopy')
 
-    url.length > 38 && (url = `${url.substr(0, 30)}...`)
+    url.length > maxUrlCaracter && (url = `${url.substr(0, 30)}...`)
+    desc.length > maxDescCaracter && (desc = `${desc.substr(0, 30)}...`)
 
     const copyLink = link => {
         navigator.clipboard.writeText(link)
@@ -57,7 +61,7 @@ function Card(props) {
                 </div>
             
                 <div className="desc-link-area">
-                    <p>{props.description}</p>
+                    <p>{desc}</p>
                     <a href={props.link}>
                         <span>
                             <BsLink45Deg />

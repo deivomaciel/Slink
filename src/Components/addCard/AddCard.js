@@ -23,6 +23,7 @@ const addNewCard = (newCard) => {
 function AddCard({ modules, dispatch }) {
     let lowerCaseTitle
     let upperCaseTitle
+    let [totalDescCaracter, setTotalDescCaracter] = useState(32)
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [desc, setDesc] = useState("")
@@ -31,6 +32,22 @@ function AddCard({ modules, dispatch }) {
     const linkRegExp = /(https|http)[:][\/][\/](www|)(.|)[a-zA-Z0-9]+[-|.]([a-zA-Z0-9]+|com)(.|)(com|org|github.io|.vercel|)/
     const titleRegExp = /[\/][\/](.|)+[.]/
     const wwwRegExp = /[\/][\/]www./
+
+    const getDesc = e => {
+        const total = 32
+        const descContent = e.target.value
+        const remainder = total - descContent.length
+        console.log(remainder)
+
+        if(remainder >= 0) {
+            setTotalDescCaracter(remainder)
+            setDesc(descContent)
+            console.log(totalDescCaracter)
+
+        } else {
+            e.target.value = desc
+        }
+    }
 
     const setValidInfo = element => {
         if(linkRegExp.test(element)) {
@@ -107,14 +124,19 @@ function AddCard({ modules, dispatch }) {
                     </div>
                     <div className="pass-container">
                         <label htmlFor="desc">Descrição</label>
-                        <input 
-                            id="desc" 
-                            className="pass-input" 
-                            type="text" 
-                            placeholder="Descrição"
-                            onChange={e => setDesc(e.target.value)}
-                        />
+                        <div className="desc-input-container">
+                            <input 
+                                id="desc" 
+                                className="pass-input" 
+                                type="text" 
+                                placeholder="Descrição"
+                                onChange={e => getDesc(e)}
+                            />
+
+                            <span>{totalDescCaracter}/32</span>
+                        </div>
                     </div>
+
                 </div>
                 <div className="bttn-area">
                     <button className="add-bttn" onClick={getInfo}>
