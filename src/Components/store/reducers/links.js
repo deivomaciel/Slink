@@ -14,6 +14,7 @@ export default function links(state = INITIAL_STATE, action) {
         case "ADD_CARD":
             INITIAL_STATE.unshift({
                 id: action.newCard.id,
+                timestamp: action.newCard.timestamp,
                 title: action.newCard.title,
                 link: action.newCard.link,
                 description: action.newCard.description

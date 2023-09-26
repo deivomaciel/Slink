@@ -14,6 +14,7 @@ function App({ modules, dispatch }) {
   let [loadFlag, setLoadFlag] = useState(false) 
   const uid = JSON.parse(localStorage.userInfo).uid
   let flag = false
+  const allLinks = modules.links
 
   const showPopUp = popUp => {
     return {
@@ -33,14 +34,18 @@ function App({ modules, dispatch }) {
     setLoadFlag(true)
     const querySnapshot = await getDocs(collection(db, `users/${uid}/cards`))
     setLoadFlag(false)
+    
     querySnapshot.forEach(doc => {
       dispatch(addNewCard({ 
         id: doc.data().id,
+        timestamp: doc['_document'].version.timestamp.seconds,
         title: doc.data().title,
         link: doc.data().link,
         description: doc.data().discription
       }))
     })
+
+    allLinks.sort((a, b) => b.timestamp - a.timestamp)
   }
 
   if(modules.popUp.activePopUp || modules.popUp.deletePopUp) {

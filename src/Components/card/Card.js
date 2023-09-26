@@ -55,14 +55,13 @@ function Card(props) {
                         <button className="menu-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
                             <FiTrash />
                         </button>
-
                     </div>
                     <h1>{props.title}</h1>
                 </div>
             
                 <div className="desc-link-area">
                     <p>{desc}</p>
-                    <a href={props.link}>
+                    <a href={props.link} target="_blank">
                         <span>
                             <BsLink45Deg />
                         </span>
