@@ -19,23 +19,47 @@ main {
     gap: 16px;
 }
 
+.btt-container {
+    position: fixed;
+    right: 40px;
+    bottom: 48px;
+    z-index: 100;
+}
+
 .add-btt {
     width: 60px;
     height: 60px;
-    z-index: 100;
+    margin-bottom: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     border: none;
-    position: fixed;
-    right: 48px;
-    bottom: 48px;
     color: #295989;
     cursor: pointer;
     transition: .3s;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-    background: white;
+    background: hsl(200, 20%, 70%);
+}
+
+
+
+.btt-container button:last-child {
+    pointer-events: none;
+    margin-bottom: -56px;
+    opacity: 0;
+}
+
+.animated {
+    animation: showUp .3s linear forwards;
+}
+
+@keyframes showUp {
+    to {
+        margin-bottom: 0;
+        pointer-events: all;
+        opacity: 1;
+    }
 }
 
 .add-btt:hover {

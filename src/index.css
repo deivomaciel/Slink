@@ -29,6 +29,10 @@
   background: #2c2c2c54;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 html {
   font-size: 62.5%;
 }

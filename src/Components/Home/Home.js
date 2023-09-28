@@ -3,14 +3,16 @@ import Card from "../card/Card";
 import AddCard from "../addCard/AddCard";
 import PopupDelete from "../popupDelete/PopupDelete"
 import { BiPlus } from "react-icons/bi"
+import { IoIosArrowUp } from "react-icons/io"
 import { connect } from "react-redux"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../../services/firebaseConfig";
 import "./styles.css"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Skeleton from "../skeleton/Skeleton";
 
 function App({ modules, dispatch }) {
+  const goUp = useRef(null)
   let [loadFlag, setLoadFlag] = useState(false) 
   const uid = JSON.parse(localStorage.userInfo).uid
   let flag = false
@@ -29,6 +31,12 @@ function App({ modules, dispatch }) {
         newCard
     }
   }
+
+  const goToTop = () => window.scrollTo(0, 0)
+
+  window.addEventListener('scroll', () => {
+    window.scrollY > 300 ? goUp.current.classList.add('animated') : goUp.current.classList.remove('animated')
+  })
 
   const getAllCards = async () => {
     setLoadFlag(true)
@@ -66,9 +74,15 @@ function App({ modules, dispatch }) {
       {modules.popUp.deletePopUp && <PopupDelete />}
       <Header />
       
-      <button className="add-btt" onClick={() => dispatch(showPopUp(true))}>
-        <BiPlus size={48}/>
-      </button>
+      <div className="btt-container">
+        <button className="add-btt" onClick={() => dispatch(showPopUp(true))}>
+          <BiPlus size={48}/>
+        </button>
+
+        <button ref={goUp} className="add-btt" onClick={goToTop}>
+          <IoIosArrowUp size={40}/>
+        </button>
+      </div>
 
       <main>
         {
