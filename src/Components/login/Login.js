@@ -7,6 +7,7 @@ import { auth } from "../../services/firebaseConfig";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom"
 import Loader from '../loader/Loader'
+import FooterComponent from "../Footer/Footer";
 
 function Login() {
     let userInfo = {
@@ -52,6 +53,12 @@ function Login() {
         }
     }
 
+    const showwarningAboutForgottenPassword = (e) => {
+        e.preventDefault()
+        console.log('ok')
+        window.alert('Desculpe! Essa funcionalidade ainda está sendo desenvolvida.')
+    }
+
     (error && (error.code == 'auth/wrong-password' || error.code == 'auth/user-not-found')) && (invalidInputs = true)
     if(user) {
         userInfo.name = user.user.name
@@ -63,65 +70,66 @@ function Login() {
 
     return (
         localStorage.userInfo ? <Navigate to="/home" /> : (
-            <div className="total-container-login">
-                <div className="logo-container">
-                    <img src={logo} alt="Logo" />
-                </div>
-                
-                <div className="form-group-login">
-                    <div>
-                        <p className="login-msg">Para continuar, faça login no Slink.</p>
+            <div className="container">
+                <div className="total-container-login">
+                    <div className="logo-container">
+                        <img src={logo} alt="Logo" />
                     </div>
-                    <form className="form-content">
-                    {invalidInputs ? <p className="formWarning">E-mail ou senha incorretos.</p> : <p></p>}
-                        <div className="inputs-container">
-                            <div className="mail-container">
-                                <label for="mail">E-mail</label>
-                                <input 
-                                    id="mail"  
-                                    className="mail-input" 
-                                    type="email" 
-                                    placeholder="E-mail"
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </div>
-                            <div className="pass-container">
-                                <label for="pass">Senha</label>
-                                <input 
-                                    id="pass" 
-                                    className="pass-input" 
-                                    type="password" 
-                                    placeholder="Senha"
-                                    onChange={e => setPassword(e.target.value)}
-                                />
-                            </div>
+                    
+                    <div className="form-group-login">
+                        <div className="info.content">
+                            <p className="login-msg">Para continuar, faça login no Slink.</p>
                         </div>
-                        <div className="submit-container">
-                            <a className="forgot-pass" href="#">Esqueceu sua senha?</a>
-                            <div className="enter-content">
-                                <label className="check-container">
-                                    <input className="check" type="checkbox" />
-                                    Lambrar de mim
-                                </label>
-                                <button className="submit-btt" onClick={e => {validateForm(e)}}>
-                                    {!loading ? 'ENTRAR' : (
-                                        <Loader
-                                            width='24'
-                                            height='24'
-                                            color='#fff'
-                                        />
-                                    )}
-                                </button>
+                        <form className="form-content">
+                        {invalidInputs ? <p className="formWarning">E-mail ou senha incorretos.</p> : <p></p>}
+                            <div className="inputs-container">
+                                <div className="mail-container">
+                                    <label for="mail">E-mail</label>
+                                    <input 
+                                        id="mail"  
+                                        className="mail-input" 
+                                        type="email" 
+                                        placeholder="E-mail"
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </div>
+                                <div className="pass-container">
+                                    <label for="pass">Senha</label>
+                                    <input 
+                                        id="pass" 
+                                        className="pass-input" 
+                                        type="password" 
+                                        placeholder="Senha"
+                                        onChange={e => setPassword(e.target.value)}
+                                    />
+                                </div>
                             </div>
+                            <div className="submit-container">
+                                <a className="forgot-pass" href="#" onClick={e => showwarningAboutForgottenPassword(e)}>Esqueceu sua senha?</a>
+                                <div className="enter-content">
+                                    
+                                    <button className="submit-btt" onClick={e => {validateForm(e)}}>
+                                        {!loading ? 'ENTRAR' : (
+                                            <Loader
+                                                width='24'
+                                                height='24'
+                                                color='#fff'
+                                            />
+                                        )}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div className="signup-container">
+                            <p>Não tem uma conta?</p>
+                            <Link to="/singup">
+                                CRIAR UMA CONTA NO SLINK
+                            </Link>
                         </div>
-                    </form>
-                    <div className="signup-container">
-                        <p>Não tem uma conta?</p>
-                        <Link to="/singup">
-                            CRIAR UMA CONTA NO SLINK
-                        </Link>
                     </div>
                 </div>
+
+                <FooterComponent />
             </div>
         )
     )

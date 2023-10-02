@@ -2,6 +2,10 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.container {
+    height: 100vh;
+}
+
 .total-container-login {
     height: 100vh;
     display: flex;
@@ -168,17 +172,18 @@
 }
 
 .enter-content button {
-    width: 131px;
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 16px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
     letter-spacing: 1px;
     font-weight: bold;
-    transition: background .3s;
+    transition: all .3s;
     background: var(--primary);
 }
 
