@@ -2,10 +2,6 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.container {
-    height: 100vh;
-}
-
 .total-container-login {
     height: 100vh;
     display: flex;
