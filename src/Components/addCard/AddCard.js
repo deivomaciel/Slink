@@ -23,7 +23,8 @@ const addNewCard = (newCard) => {
 function AddCard({ modules, dispatch }) {
     let lowerCaseTitle
     let upperCaseTitle
-    let [totalDescCaracter, setTotalDescCaracter] = useState(32)
+    const total = 32
+    let [totalDescCaracter, setTotalDescCaracter] = useState(total)
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [desc, setDesc] = useState("")
@@ -34,7 +35,6 @@ function AddCard({ modules, dispatch }) {
     const wwwRegExp = /[\/][\/]www./
 
     const getDesc = e => {
-        const total = 32
         const descContent = e.target.value
         const remainder = total - descContent.length
         console.log(remainder)
@@ -133,10 +133,9 @@ function AddCard({ modules, dispatch }) {
                                 onChange={e => getDesc(e)}
                             />
 
-                            <span>{totalDescCaracter}/32</span>
+                            <span>{totalDescCaracter}/{total}</span>
                         </div>
                     </div>
-
                 </div>
                 <div className="bttn-area">
                     <button className="add-bttn" onClick={getInfo}>

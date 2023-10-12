@@ -51,12 +51,14 @@ function Card(props) {
             <div className="link-div">
                 <div className="title-area">
                     <div className="top-card">
-                        <img className="icon" src={linkIcon} title={props.imgTitle} height="24" width="24"/>
+                        <div className="img-container">
+                            <img className="icon" src={linkIcon} title={props.imgTitle} height="24" width="24"/>
+                            <h1>{props.title}</h1>
+                        </div>
                         <button className="menu-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
                             <FiTrash />
                         </button>
                     </div>
-                    <h1>{props.title}</h1>
                 </div>
             
                 <div className="desc-link-area">

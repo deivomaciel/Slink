@@ -129,7 +129,6 @@
 
 .login-container {
     width: 35rem;
-    /* position: absolute; */
     display: flex;
     margin-top: 32px;
     bottom: 8px;
@@ -183,21 +182,3 @@
         width: 300px;
     }   
 }
-/* 
-@media (min-height: 896px) {
-    .signup-container {
-        margin-bottom: 64px;
-    }  
-}
-
-@media (min-height: 844px) {
-    .signup-container {
-        margin-bottom: 80px;
-    }  
-}
-
-@media (min-height: 1180px) {
-    .signup-container {
-        margin-bottom: 192px;
-    }  
-} */
