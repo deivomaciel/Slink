@@ -103,6 +103,7 @@ function App({ modules, dispatch }) {
                         title={card.title}
                         link={card.link}
                         description={card.description}
+                        key={card.id}
                       />
                     ))
                   }

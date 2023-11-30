@@ -84,7 +84,7 @@ function Login() {
                         {invalidInputs ? <p className="formWarning">E-mail ou senha incorretos.</p> : <p></p>}
                             <div className="inputs-container">
                                 <div className="mail-container">
-                                    <label for="mail">E-mail</label>
+                                    <label htmlFor="mail">E-mail</label>
                                     <input 
                                         id="mail"  
                                         className="mail-input" 
@@ -94,7 +94,7 @@ function Login() {
                                     />
                                 </div>
                                 <div className="pass-container">
-                                    <label for="pass">Senha</label>
+                                    <label htmlFor="pass">Senha</label>
                                     <input 
                                         id="pass" 
                                         className="pass-input" 

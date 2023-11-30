@@ -101,7 +101,7 @@ function SingUp() {
                         <form className="singup-form-content">
                             <div className="inputs-container">
                                 <div className="name-container">
-                                    <label for="name">Nome</label>
+                                    <label htmlFor="name">Nome</label>
                                     <input 
                                         id="name" 
                                         className={`mail-input ${name}`}
@@ -111,7 +111,7 @@ function SingUp() {
                                     />
                                 </div>
                                 <div className="mail-container">
-                                    <label for="mail">E-mail</label>
+                                    <label htmlFor="mail">E-mail</label>
                                     <input 
                                         id="mail" 
                                         className="mail-input" 
@@ -122,7 +122,7 @@ function SingUp() {
                                     {formInfo.emailAlreadyInUse && <p>Esse e-mail já está em uso.</p>}
                                 </div>
                                 <div className="pass-container">
-                                    <label for="pass">Senha</label>
+                                    <label htmlFor="pass">Senha</label>
                                     <input 
                                         id="pass" 
                                         className="pass-input" 
