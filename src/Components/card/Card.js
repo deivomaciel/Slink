@@ -8,12 +8,23 @@ function Card(props) {
     let desc = props.description
     const maxUrlCaracter = 38
     const maxDescCaracter = 32
+    const maxTitleCaracter = 11
     const linkIcon = `https://www.google.com/s2/favicons?domain=${props.link}`
     let [clicked, setClick] = useState(false)
     let [buttonCalss, setButtonClass] = useState('uncopy')
+    let title = props.title
 
     url.length > maxUrlCaracter && (url = `${url.substr(0, 30)}...`)
     desc.length > maxDescCaracter && (desc = `${desc.substr(0, 30)}...`)
+    title.length > maxTitleCaracter && (title = `${title.substr(0, maxTitleCaracter)}...`)
+    
+    const getTitle = link => {
+        const regex = /^(?:https?:\/\/)?(?:www\.)?([a-zA-Z0-9-]+)\./
+        const match = regex.exec(link)
+        
+        if (match && match.length > 1) return match[1]
+        else return null 
+    }
 
     const copyLink = link => {
         navigator.clipboard.writeText(link)
@@ -53,7 +64,7 @@ function Card(props) {
                     <div className="top-card">
                         <div className="img-container">
                             <img className="icon" src={linkIcon} title={props.imgTitle} height="24" width="24"/>
-                            <h1>{props.title}</h1>
+                            <h1>{title}</h1>
                         </div>
                         <button className="menu-btt" onClick={() => props.dispatch(showDeletePopUp(true))}>
                             <FiTrash />
