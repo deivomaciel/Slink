@@ -21,18 +21,14 @@ const addNewCard = (newCard) => {
 }
 
 function AddCard({ modules, dispatch }) {
-    let lowerCaseTitle
-    let upperCaseTitle
     const total = 32
     let [totalDescCaracter, setTotalDescCaracter] = useState(total)
-    const [title, setTitle] = useState("")
+    let [title, setTitle] = useState("")
     const [link, setLink] = useState("")
     const [desc, setDesc] = useState("")
     const [imgUrl, setImgUrl] = useState("")
     const [urlValid, setValid] = useState(false)
     const linkRegExp = /(https|http)[:][\/][\/](www|)(.|)[a-zA-Z0-9]+[-|.]([a-zA-Z0-9]+|com)(.|)(com|org|github.io|.vercel|)/
-    const titleRegExp = /[\/][\/](.|)+[.]/
-    const wwwRegExp = /[\/][\/]www./
 
     const getDesc = e => {
         const descContent = e.target.value
@@ -43,35 +39,24 @@ function AddCard({ modules, dispatch }) {
             setTotalDescCaracter(remainder)
             setDesc(descContent)
             console.log(totalDescCaracter)
+        } else e.target.value = desc
+    }
 
-        } else {
-            e.target.value = desc
-        }
+    const getTitle = link => {
+        const regex = /^(?:https?:\/\/)?(?:www\.)?([a-zA-Z0-9-]+)\./
+        const match = regex.exec(link)
+        if (match && match.length > 1) return match[1]
+        else return null 
     }
 
     const setValidInfo = element => {
         if(linkRegExp.test(element)) {
+            title = getTitle(element)
+            setTitle(title)
             setLink(element)
             setImgUrl(`https://www.google.com/s2/favicons?domain=${linkRegExp.exec(element)[0]}`)
             setValid(true)
-        } else {
-            setValid(false)
-        }
-
-        if(titleRegExp.test(element)) {
-            let initialTitle = titleRegExp.exec(element)[0]
-            if(wwwRegExp.test(initialTitle)) {
-                lowerCaseTitle = initialTitle.replace("//www.", "").replace(".","")
-                upperCaseTitle = lowerCaseTitle[0].toUpperCase() + lowerCaseTitle.substring(1)
-                setTitle(upperCaseTitle)
-            } else {
-                lowerCaseTitle = initialTitle.replace("//", "").replace(".","")
-                upperCaseTitle = lowerCaseTitle[0].toUpperCase() + lowerCaseTitle.substring(1)
-                setTitle(upperCaseTitle)
-            }
-        } else {
-            setTitle("")
-        }
+        } else setValid(false)
     }
 
     const addNewCardOnFirestore = async uid => { // Coloar em um arquivo de CRUD's
